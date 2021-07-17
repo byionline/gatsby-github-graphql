@@ -103,3 +103,33 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+## Query your data
+Visit the link: _`http://localhost:8000/___graphql` and query your data with below codes
+```
+query MyQuery {
+  github {
+    viewer {
+      starredRepositories(first: 10, orderBy: {field: STARRED_AT, direction: DESC}) {
+        edges {
+          node {
+            id
+            name
+            url
+            description
+            stargazers {
+              totalCount
+            }
+            forkCount
+            languages(first: 3) {
+              nodes {
+                id
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
